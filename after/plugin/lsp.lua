@@ -9,6 +9,7 @@ lsp.ensure_installed({
     "clangd",        -- C
     "jdtls",         -- Java
     "html",          -- Html
+    "bashls",        -- Bash
 })
 
 local cmp = require("cmp")
