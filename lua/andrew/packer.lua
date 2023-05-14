@@ -9,7 +9,7 @@ return require("packer").startup(function(use)
 		requires = { {"nvim-lua/plenary.nvim"} }
 	}
 
-    -- Treesitter (I use mainly for syntax highlighting)
+    -- Treesittep
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
     -- VSCode-like theme
@@ -18,7 +18,7 @@ return require("packer").startup(function(use)
         commit = "db9ee33"
     }
 
-    -- Left-side file tryy dispaly
+    -- Left-side file tree dispaly
     use {
         "nvim-tree/nvim-tree.lua",
         requires = {
@@ -27,7 +27,7 @@ return require("packer").startup(function(use)
         tag = "nightly" -- optional, updated every week
     }
 
-    -- Shows current code on bottom of screen
+    -- Shows current mode on bottom of screen
     use "itchyny/lightline.vim"
 
     -- LSP
@@ -53,6 +53,9 @@ return require("packer").startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+
+    -- Git wrapper
+    use("tpope/vim-fugitive")
 
     -- Latex editing in vim
     use "lervag/vimtex"
