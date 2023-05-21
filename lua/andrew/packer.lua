@@ -12,11 +12,12 @@ return require("packer").startup(function(use)
     -- Treesittep
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
-    -- VSCode-like theme
+    -- Themes
     use {
         "Mofiqul/vscode.nvim",
         commit = "db9ee33"
     }
+    use "aktersnurra/no-clown-fiesta.nvim"
 
     -- Left-side file tree dispaly
     use {
