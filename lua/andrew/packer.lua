@@ -13,11 +13,10 @@ return require("packer").startup(function(use)
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
     -- Themes
-    use {
-        "Mofiqul/vscode.nvim",
-        commit = "db9ee33"
-    }
     use "aktersnurra/no-clown-fiesta.nvim"
+
+    -- Referencing a hex code highlights it in that color
+    use "lilydjwg/colorizer"
 
     -- Left-side file tree dispaly
     use {
@@ -54,6 +53,9 @@ return require("packer").startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+
+    -- Linting
+    use "jose-elias-alvarez/null-ls.nvim"
 
     -- Git wrapper
     use("tpope/vim-fugitive")
