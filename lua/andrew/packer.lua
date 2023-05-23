@@ -18,6 +18,9 @@ return require("packer").startup(function(use)
     -- Referencing a hex code highlights it in that color
     use "lilydjwg/colorizer"
 
+    -- Relative line numbers disappear when not actively in buffer
+    use "jeffkreeftmeijer/vim-numbertoggle"
+
     -- Left-side file tree dispaly
     use {
         "nvim-tree/nvim-tree.lua",
