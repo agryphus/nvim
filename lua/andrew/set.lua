@@ -21,8 +21,8 @@ vim.o.shell = "/usr/bin/zsh"
 -- I don't believe this functionality has been ported to lua.
 vim.cmd([[
 function! TerminalSettings()
-    setlocal nonumber norelativenumber
-    setlocal scrolloff=0
+  setlocal nonumber norelativenumber
+  setlocal scrolloff=0
 endfunction
 autocmd TermOpen * call TerminalSettings()
 ]])

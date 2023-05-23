@@ -1,4 +1,4 @@
 vim.g.lightline = {
-    colorscheme = "one"
+  colorscheme = "one"
 }
 

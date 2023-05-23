@@ -43,7 +43,10 @@ vim.cmd[[colorscheme no-clown-fiesta]]
 -- My own color overrides
 local hl = vim.api.nvim_set_hl
 hl(0, 'TSConstant', { fg = palette.yellow })
+hl(0, 'EndOfBuffer', { fg = palette.medium_gray })
 hl(0, 'ErrorMsg', { fg = palette.yellow })
 hl(0, 'LineNr', { fg = palette.medium_gray })
+hl(0, 'NvimTreeCursorLine', { fg = palette.yellow })
+hl(0, 'NvimTreeEndOfBuffer', { fg = palette.medium_gray })
 hl(0, 'NvimTreeFolderIcon', { fg = palette.yellow })
 
