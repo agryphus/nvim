@@ -9,7 +9,7 @@ return require("packer").startup(function(use)
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
-  -- Treesittep
+  -- Treesitter
   use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
 
   -- Themes
@@ -20,6 +20,10 @@ return require("packer").startup(function(use)
 
   -- Relative line numbers disappear when not actively in buffer
   use "jeffkreeftmeijer/vim-numbertoggle"
+
+  -- See function signatures when typing them
+  use "ray-x/lsp_signature.nvim"
+  require "lsp_signature".setup({})
 
   -- Left-side file tree dispaly
   use {
