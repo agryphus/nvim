@@ -35,7 +35,7 @@ local palette = {
 }
 
 require("no-clown-fiesta").setup({
-  transparent = true, -- Enable this to disable the bg color
+  transparent = true,
 })
 
 vim.cmd[[
@@ -90,6 +90,7 @@ hl(0, 'TSConstant', { fg = palette.yellow })
 hl(0, 'EndOfBuffer', { fg = palette.medium_gray })
 hl(0, 'ErrorMsg', { fg = palette.yellow })
 hl(0, 'LineNr', { fg = palette.medium_gray })
+hl(0, 'MasonNormal', { bg = palette.gray })
 hl(0, 'NvimTreeCursorLine', { fg = palette.yellow })
 hl(0, 'NvimTreeEndOfBuffer', { fg = palette.medium_gray })
 hl(0, 'NvimTreeIndentMarker', { fg = palette.medium_gray })

@@ -12,6 +12,9 @@ lsp.ensure_installed({
     "bashls",        -- Bash
 })
 
+local ensure_installed_extras = {
+}
+
 local cmp = require("cmp")
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -50,4 +53,12 @@ lsp.configure('pyright', {
 })
 
 lsp.setup()
+
+-- Install extra packages (linters, formatters, et c)
+local registry = require("mason-registry")
+for _, extra in ipairs(ensure_installed_extras) do
+  if not registry.is_installed(extra) then
+    vim.cmd(string.format("MasonInstall %s", extra))
+  end
+end
 
