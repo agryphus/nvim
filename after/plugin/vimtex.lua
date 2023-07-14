@@ -1,19 +1,14 @@
 vim.cmd([[
 
-let maplocalleader = " "
+syntax enable
 
-let g:vimtex_compiler_method = 'latexmk'
-
+let g:maplocalleader=' '
+let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex' 
 let g:vimtex_quickfix_mode=0
-
-" settings for sumatraPDF
-let g:vimtex_view_general_viewer = 'C:\Users\andre\AppData\Local\SumatraPDF\SumatraPDF.exe'
-let g:vimtex_view_general_options
-  \ = '-reuse-instance -forward-search @tex @line @pdf'
-
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_view_forward_search_on_start=0 " Weird highlighting otherwise
 
 augroup vimtex_config
   au!

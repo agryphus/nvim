@@ -70,11 +70,14 @@ return require("packer").startup(function(use)
   -- Latex editing in vim
   use "lervag/vimtex"
 
-  -- Vim Games :D
-  use "ThePrimeagen/vim-be-good"
-
   -- Auto comment
   use "numToStr/Comment.nvim"
+
+  -- Markdown
+  use({
+      "agryphus/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   -- Jupyter notebook integration
   use {
