@@ -6,6 +6,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- centers cursor when jumping up and down page
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- easier escape back to normal mode
 vim.keymap.set("i", "<C-c>", "<Esc>")

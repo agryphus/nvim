@@ -3,6 +3,12 @@ vim.cmd.packadd("packer.nvim")
 return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
 
+  -- Org mode
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+  }
+
   -- Find files and strings
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.0",
