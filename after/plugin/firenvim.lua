@@ -7,7 +7,7 @@ vim.g.firenvim_config = {
       priority = 0,
       selector = "textarea",
       takeover = "never"
-    }
+    },
   }
 }
 
@@ -15,4 +15,9 @@ vim.g.firenvim_config = {
 if vim.g.started_by_firenvim == true then
   vim.opt.scrolloff = 0
 end
+
+vim.api.nvim_create_autocmd({'BufEnter'}, {
+  pattern = "localhost_*.txt",
+  command = "set filetype=python"
+})
 

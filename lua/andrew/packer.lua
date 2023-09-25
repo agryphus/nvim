@@ -9,6 +9,27 @@ return require("packer").startup(function(use)
     run = ":Neorg sync-parsers",
   }
 
+  -- Dashboard
+  use {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    requires = {'nvim-tree/nvim-web-devicons'},
+    config = function()
+      require('dashboard').setup {
+        -- config
+      }
+    end,
+  }
+
+  -- File manager in nvim
+  use {
+    "ptzz/lf.vim",
+    requires = { {"voldikss/vim-floaterm"} },
+  }
+
+  -- Zen mode
+  use "folke/zen-mode.nvim"
+
   -- Find files and strings
   use {
     "nvim-telescope/telescope.nvim", tag = "0.1.0",
@@ -20,12 +41,18 @@ return require("packer").startup(function(use)
 
   -- Themes
   use "aktersnurra/no-clown-fiesta.nvim"
+  use "ellisonleao/gruvbox.nvim"
+  use { 'rose-pine/neovim', as = 'rose-pine' }
+  use 'Mofiqul/vscode.nvim'
 
   -- Referencing a hex code highlights it in that color
   use "lilydjwg/colorizer"
 
   -- Relative line numbers disappear when not actively in buffer
   use "jeffkreeftmeijer/vim-numbertoggle"
+
+  -- History visualizer
+  use "mbbill/undotree"
 
   -- See function signatures when typing them
   use "ray-x/lsp_signature.nvim"
