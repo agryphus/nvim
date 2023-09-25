@@ -35,3 +35,7 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
+-- case insensitive search
+vim.keymap.set("n", "<leader>/", "/\\c")
+vim.keymap.set("n", "<leader>?", "?\\c")
+
