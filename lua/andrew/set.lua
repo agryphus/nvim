@@ -15,7 +15,7 @@ vim.opt.wrap = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "auto"
 
-vim.o.shell = "/usr/bin/zsh"
+vim.o.shell = "zsh"
 
 -- Local settings for when in :terminal mode
 -- I don't believe this functionality has been ported to lua.
