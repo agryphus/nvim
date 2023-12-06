@@ -17,6 +17,9 @@ vim.opt.signcolumn = "auto"
 
 vim.o.shell = "zsh"
 
+-- Do not map q to :q in man mode
+vim.g.no_man_maps = true;
+
 -- Local settings for when in :terminal mode
 -- I don't believe this functionality has been ported to lua.
 vim.cmd([[

@@ -1,64 +1,55 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+-- LANGUAGE SERVERS
+local lsp_zero = require('lsp-zero')
+local lspconfig = require("lspconfig")
+local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lsp.ensure_installed({
-    "lua_ls",        -- Lua
-    "rust_analyzer", -- Rust
-    "pyright",       -- Python
-    "texlab",        -- Latex
-    "clangd",        -- C
-    "jdtls",         -- Java
-    "html",          -- Html
-    "bashls",        -- Bash
-})
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
 
-local ensure_installed_extras = {
-}
-
-local cmp = require("cmp")
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-    ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-})
-
-lsp.set_preferences({
-    sign_icons = { }
-})
-
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
-
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                -- Making sure that lua recognizes the global variable 'vim'
-                globals = { 'vim' },
-            },
-        },
+lspconfig.lua_ls.setup({
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Making sure that lua recognizes the global variable 'vim'
+        globals = { 'vim' },
+      },
     },
+  },
 })
 
-lsp.configure('pyright', {
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "off",
-            },
-        },
-    },
+lspconfig.clangd.setup({
+  capabilities = lsp_capabilities,
 })
 
-lsp.setup()
+-- AUTOCOMPLETION
 
--- Install extra packages (linters, formatters, et c)
-local registry = require("mason-registry")
-for _, extra in ipairs(ensure_installed_extras) do
-  if not registry.is_installed(extra) then
-    vim.cmd(string.format("MasonInstall %s", extra))
-  end
-end
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  sources = {
+    { name = "luasnip", option = { show_autosnippets = true } },
+    { name = "nvim_lua" },
+    { name = "nvim_lsp" },
+    { name = "path" }, -- Auto complete paths
+  },
+  mapping = {
+    -- Navigate between completion item
+    ['<M-k>'] = cmp.mapping.select_prev_item(),
+    ['<M-j>'] = cmp.mapping.select_next_item(),
+
+    -- toggle completion
+    ['<M-u>'] = cmp_action.toggle_completion(),
+
+    -- navigate between snippet placeholder
+    ['<C-a>'] = cmp_action.luasnip_jump_backward(),
+    ['<C-d>'] = cmp_action.luasnip_jump_forward(),
+
+    -- Confirm item
+    ['<Tab>'] = cmp.mapping.confirm({select = true}),
+  }
+})
 
