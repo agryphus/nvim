@@ -12,25 +12,28 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require("packer").startup(function(use)
+  use "goolord/alpha-nvim"
+
   use "wbthomason/packer.nvim"
 
-  -- -- Dashboard
-  -- use {
-  --   'glepnir/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   requires = {'nvim-tree/nvim-web-devicons'},
-  --   config = function()
-  --     require('dashboard').setup {
-  --       -- config
-  --     }
-  --   end,
-  -- }
+  use "DreamMaoMao/yazi.nvim"
+
+  use "whonore/Coqtail"
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end
+  }
 
   -- File manager in nvim
   use {
     "ptzz/lf.vim",
     requires = { {"voldikss/vim-floaterm"} },
   }
+  vim.cmd("let g:lf_map_keys = 0") -- Need to put here or else doesn't work
 
   -- Zen mode
   use "folke/zen-mode.nvim"
@@ -97,6 +100,12 @@ return require("packer").startup(function(use)
     }
   }
 
+  -- Better diagnostics
+  use {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  }
+
   -- Linting
   use "jose-elias-alvarez/null-ls.nvim"
 
@@ -116,10 +125,10 @@ return require("packer").startup(function(use)
   })
 
   -- Jupyter notebook integration
-  use {
-    "glacambre/firenvim",
-    run = function() vim.fn["firenvim#install"](0) end
-  }
+  -- use {
+  --   "glacambre/firenvim",
+  --   run = function() vim.fn["firenvim#install"](0) end
+  -- }
 
   if packer_bootstrap then
     require('packer').sync()

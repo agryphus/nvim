@@ -9,16 +9,22 @@ lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
+-- LUA
 lspconfig.lua_ls.setup({
   settings = {
     Lua = {
       diagnostics = {
         -- Making sure that lua recognizes the global variable 'vim'
-        globals = { 'vim' },
+        globals = { 'vim', 'xplr' },
       },
     },
   },
 })
+
+-- RUST
+-- Must run `rustup default stable` and then `rustup component add rust-analyzer`
+-- upon first install
+lspconfig.rust_analyzer.setup({})
 
 lspconfig.clangd.setup({
   capabilities = lsp_capabilities,
@@ -52,4 +58,12 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping.confirm({select = true}),
   }
 })
+
+-- DIAGNOSTICS
+
+-- Show all diagnostics on current line in floating window
+vim.api.nvim_set_keymap(
+  'n', 'gl', ':lua vim.diagnostic.open_float()<CR>',
+  { noremap = true, silent = true }
+)
 

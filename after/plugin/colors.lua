@@ -191,13 +191,17 @@ vim.cmd[[colorscheme no-clown-fiesta]]
 
 -- My own color overrides
 local hl = vim.api.nvim_set_hl
-hl(0, 'TSConstant', { fg = palette.yellow })
-hl(0, 'EndOfBuffer', { fg = palette.medium_gray })
-hl(0, 'ErrorMsg', { fg = palette.yellow })
-hl(0, 'LineNr', { fg = palette.medium_gray })
-hl(0, 'MasonNormal', { bg = palette.gray })
-hl(0, 'NvimTreeCursorLine', { fg = palette.yellow })
-hl(0, 'NvimTreeEndOfBuffer', { fg = palette.medium_gray })
+hl(0, 'TSConstant',           { fg = palette.yellow })
+hl(0, 'EndOfBuffer',          { fg = palette.medium_gray })
+hl(0, 'ErrorMsg',             { fg = palette.yellow })
+hl(0, 'LineNr',               { fg = palette.medium_gray })
+hl(0, 'MasonNormal',          { bg = palette.gray })
+hl(0, 'NvimTreeCursorLine',   { fg = palette.yellow })
+hl(0, 'NvimTreeEndOfBuffer',  { fg = palette.medium_gray })
 hl(0, 'NvimTreeIndentMarker', { fg = palette.medium_gray })
-hl(0, 'NvimTreeFolderIcon', { fg = palette.yellow })
+hl(0, 'NvimTreeFolderIcon',   { fg = palette.yellow })
+hl(0, 'WhichKeyFloat',        { bg = nil })
+hl(0, 'WhichKeyDesc',         { link = "function" })
+hl(0, 'WhichKey',             { fg = palette.medium_gray_blue })
+hl(0, 'WhichKeyGroup',        { fg = palette.gray_blue, bold = true })
 

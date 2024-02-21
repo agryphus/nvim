@@ -1,6 +1,7 @@
-vim.cmd([[
+vim.keymap.set("n", "<leader>mp", "<Plug>MarkdownPreview",
+  { desc = "Markdown prewview" })
 
-nmap <leader>mp <Plug>MarkdownPreview
+vim.cmd([[
 
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0

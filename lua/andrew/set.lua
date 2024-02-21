@@ -1,5 +1,3 @@
--- vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -9,8 +7,26 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
+vim.opt.linebreak = true
 
+local autocmd = vim.api.nvim_create_autocmd
+autocmd("bufenter", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.ft ~= "terminal" then
+      vim.opt.laststatus = 2
+    else
+      vim.opt.laststatus = 0
+    end
+  end,
+})
+
+-- Only search with case if capital letter is typed
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.wrap = true
+
+vim.opt.splitbelow = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "auto"
