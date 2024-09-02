@@ -21,6 +21,12 @@ autocmd("bufenter", {
   end,
 })
 
+vim.filetype.add({
+  extension = {
+    typ = 'typst'
+  }
+})
+
 -- Only search with case if capital letter is typed
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

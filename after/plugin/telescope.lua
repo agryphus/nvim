@@ -24,6 +24,6 @@ wk.register({h = { name = "help" }, prefix = "<leader>"})
 vim.keymap.set("n", "<leader>ht", builtin.colorscheme, { desc = "Load theme" })
 vim.keymap.set("n", "<leader>hf", builtin.commands   , { desc = "Describe function" })
 vim.keymap.set("n", "<leader>hk", builtin.keymaps    , { desc = "Describe key" })
-vim.keymap.set("n", "<leader>hv", builtin.vim_options, { desc = "Describe key" })
+vim.keymap.set("n", "<leader>hv", builtin.vim_options, { desc = "Describe variable" })
 vim.keymap.set("n", "<leader>hh", builtin.help_tags  , { desc = "Search local wiki" })
 

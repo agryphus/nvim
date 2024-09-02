@@ -12,14 +12,21 @@ end
 local packer_bootstrap = ensure_packer()
 
 return require("packer").startup(function(use)
-  use "goolord/alpha-nvim"
-
   use "wbthomason/packer.nvim"
 
+  -- QML syntax highlighting
+  use "peterhoeg/vim-qml"
+
+  -- Terminal file manager support
   use "DreamMaoMao/yazi.nvim"
 
+  -- Coq support
   use "whonore/Coqtail"
 
+  -- Dashboard buffer
+  use "goolord/alpha-nvim"
+
+  -- Show valid keys mid key chord
   use {
     "folke/which-key.nvim",
     config = function()
@@ -117,12 +124,6 @@ return require("packer").startup(function(use)
 
   -- Auto comment
   use "numToStr/Comment.nvim"
-
-  -- Markdown
-  use({
-      "agryphus/markdown-preview.nvim",
-      run = function() vim.fn["mkdp#util#install"]() end,
-  })
 
   -- Jupyter notebook integration
   -- use {
