@@ -46,6 +46,35 @@ vim.keymap.set("n", "<leader>tc",
   end,
   {desc = "Toggle color column"})
 
+vim.keymap.set("n", "<leader>t", "<noop>", {desc = "Toggle"})
+vim.keymap.set("n", "<leader>tl",
+  function ()
+    if vim.wo.number == false and vim.wo.relativenumber == false then
+      vim.wo.number = true
+      print("absolute numbers")
+    elseif vim.wo.number == true and vim.wo.relativenumber == false then
+      vim.wo.relativenumber = true
+      print("relative line numbers")
+    else
+      vim.wo.number = false
+      vim.wo.relativenumber = false
+      print("no line numbers")
+    end
+  end,
+  {desc = "Toggle line numbers"})
+
+vim.keymap.set("n", "<leader>tw",
+  function ()
+    if vim.wo.wrap then
+      vim.wo.wrap = false
+      print("nowrap")
+    else
+      vim.wo.wrap = true
+      print("wrap")
+    end
+  end,
+  {desc = "Toggle line wrapping"})
+
 -- case insensitive search
 vim.keymap.set("n", "<leader>/", "/\\c")
 vim.keymap.set("n", "<leader>?", "?\\c")

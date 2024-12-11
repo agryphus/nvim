@@ -1,4 +1,4 @@
 require("andrew.remap")
-require("andrew.packer")
+require("andrew.lazy")
 require("andrew.set")
 

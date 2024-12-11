@@ -59,11 +59,13 @@ cmp.setup({
   }
 })
 
--- DIAGNOSTICS
-
 -- Show all diagnostics on current line in floating window
-vim.api.nvim_set_keymap(
-  'n', 'gl', ':lua vim.diagnostic.open_float()<CR>',
-  { noremap = true, silent = true }
-)
+vim.keymap.set("n", "gl", ":lua vim.diagnostic.open_float()<CR>",
+  { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>le", ":LspStop<CR>",
+ { desc = "LSP Stop" })
+
+vim.keymap.set("n", "<leader>ls", ":LspStart<CR>",
+ { desc = "LSP Start" })
 
