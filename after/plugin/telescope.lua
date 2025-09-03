@@ -6,13 +6,12 @@ require("telescope").setup{
   }
 }
 
-local wk = require("which-key")
-
 vim.keymap.set("n", "<leader>p", "<noop>", {desc = "Project"})
-vim.keymap.set("n", "<leader>pf", builtin.find_files, {desc = "Project find"})
+vim.keymap.set("n", "<leader>pf", ":Telescope find_files no_ignore=true <CR>", {desc = "Project find"})
+vim.keymap.set("n", "<leader>.", builtin.find_files, {desc = "Project find (.gitignore)"})
 vim.keymap.set("n", "<leader>ps",
   function ()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") })
+    builtin.grep_string({ search = vim.fn.input("Grep > "), no_ignore = true })
   end,
   { desc = "Project search" })
 

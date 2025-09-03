@@ -21,6 +21,13 @@ autocmd("bufenter", {
   end,
 })
 
+-- You can then map it to a key or create a command:
+vim.api.nvim_create_user_command('GoFmt', function()
+  local filename = vim.fn.expand('%')
+  vim.fn.system('gofmt -e -w ' .. filename)
+  vim.cmd('edit!')
+end, {})
+
 vim.filetype.add({
   extension = {
     typ = 'typst'
@@ -38,6 +45,8 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "auto"
 
 vim.o.shell = "zsh"
+
+vim.o.title = true
 
 -- Do not map q to :q in man mode
 vim.g.no_man_maps = true;

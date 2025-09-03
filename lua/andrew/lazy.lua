@@ -30,12 +30,42 @@ require("lazy").setup({
     event = "VeryLazy",
 	},
 
+  -- Markdown preview
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    ft = { 'markdown' },
+    build = function()
+      vim.cmd [[Lazy load markdown-preview.nvim]]
+      vim.fn['mkdp#util#install']()
+    end,
+  },
+
   -- Dashboard buffer
 	{
     "goolord/alpha-nvim",
     -- dependencies = { 'echasnovski/mini.icons' },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
+
+  -- Compile mode
+  {
+    "ej-shafran/compile-mode.nvim",
+    -- tag = "v5.*",
+    -- you can just use the latest version:
+    branch = "latest",
+    -- or the most up-to-date updates:
+    -- branch = "nightly",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "m00qek/baleia.nvim", tag = "v1.3.0" },
+    },
+    config = function()
+      vim.g.compile_mode = {
+          baleia_setup = true,
+      }
+    end
+  };
 
   -- Zen mode
   "folke/zen-mode.nvim",
@@ -75,10 +105,10 @@ require("lazy").setup({
 
   -- See function signatures when typing them
 	{
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function(_, opts) require'lsp_signature'.setup(opts) end
+    -- "ray-x/lsp_signature.nvim",
+    -- event = "VeryLazy",
+    -- opts = {},
+    -- config = function(_, opts) require'lsp_signature'.setup(opts) end
   },
 
   -- Left-side file tree dispaly
@@ -89,8 +119,15 @@ require("lazy").setup({
     },
   },
 
-  -- Shows current mode on bottom of screen
-  "itchyny/lightline.vim",
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+  },
+
+  {
+    'jedrzejboczar/possession.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+  },
 
   -- LSP
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v4.x'},

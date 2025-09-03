@@ -21,6 +21,8 @@ lspconfig.lua_ls.setup({
   },
 })
 
+vim.g.zig_fmt_autosave = 0
+
 -- RUST
 -- Must run `rustup default stable` and then `rustup component add rust-analyzer`
 -- upon first install
@@ -29,6 +31,30 @@ lspconfig.rust_analyzer.setup({})
 lspconfig.clangd.setup({
   capabilities = lsp_capabilities,
 })
+
+lspconfig.gopls.setup({
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+})
+
+lspconfig.pylsp.setup({
+  settings = {
+    pylsp = {
+      pylint = { enabled = true, executable = "pylint" },
+    },
+  },
+})
+
+vim.keymap.set("n", "<leader>gf", ":GoFmt<CR>",
+    { noremap = true, silent = true, desc = "Go Format" }
+)
 
 -- AUTOCOMPLETION
 
