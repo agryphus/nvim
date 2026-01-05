@@ -1,6 +1,5 @@
 -- LANGUAGE SERVERS
 local lsp_zero = require('lsp-zero')
-local lspconfig = require("lspconfig")
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -10,7 +9,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 -- LUA
-lspconfig.lua_ls.setup({
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
@@ -20,19 +19,22 @@ lspconfig.lua_ls.setup({
     },
   },
 })
+vim.lsp.enable('lua_ls')
 
 vim.g.zig_fmt_autosave = 0
 
 -- RUST
 -- Must run `rustup default stable` and then `rustup component add rust-analyzer`
 -- upon first install
-lspconfig.rust_analyzer.setup({})
+vim.lsp.config('rust_analyzer', {})
+vim.lsp.enable('rust_analyzer')
 
-lspconfig.clangd.setup({
+vim.lsp.config('clangd', {
   capabilities = lsp_capabilities,
 })
+vim.lsp.enable('clangd')
 
-lspconfig.gopls.setup({
+vim.lsp.config('gopls', {
   settings = {
     gopls = {
       analyses = {
@@ -43,14 +45,16 @@ lspconfig.gopls.setup({
     },
   },
 })
+vim.lsp.enable('gopls')
 
-lspconfig.pylsp.setup({
+vim.lsp.config('pylsp', {
   settings = {
     pylsp = {
       pylint = { enabled = true, executable = "pylint" },
     },
   },
 })
+vim.lsp.enable('pylsp')
 
 vim.keymap.set("n", "<leader>gf", ":GoFmt<CR>",
     { noremap = true, silent = true, desc = "Go Format" }
@@ -94,4 +98,11 @@ vim.keymap.set("n", "<leader>le", ":LspStop<CR>",
 
 vim.keymap.set("n", "<leader>ls", ":LspStart<CR>",
  { desc = "LSP Start" })
+
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end,
+ { desc = "Jump to definition" })
+vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end,
+ { desc = "Jump to declaration" })
+vim.keymap.set("n", "gt", function() vim.lsp.buf.type_definition() end,
+ { desc = "Jump to type definition" })
 
