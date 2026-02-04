@@ -1,12 +1,5 @@
 -- LANGUAGE SERVERS
-local lsp_zero = require('lsp-zero')
 local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
-end)
 
 -- LUA
 vim.lsp.config('lua_ls', {
@@ -58,6 +51,10 @@ vim.lsp.enable('pylsp')
 
 vim.keymap.set("n", "<leader>gf", ":GoFmt<CR>",
     { noremap = true, silent = true, desc = "Go Format" }
+)
+
+vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>",
+    { desc = "Format Code" }
 )
 
 -- AUTOCOMPLETION
